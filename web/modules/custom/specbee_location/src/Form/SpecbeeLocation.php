@@ -5,15 +5,20 @@ namespace Drupal\specbee_location\Form;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 
+/**
+ * Class SpecbeeLocation.
+ *
+ * @package Drupal\specbee_location\Form
+ */
 class SpecbeeLocation extends ConfigFormBase {
 
   /**
-   * {@inheritdoc}  
-   */  
-  protected function getEditableConfigNames() {  
-    return [  
-      'specbee_location.adminsettings',  
-    ];  
+   * {@inheritdoc}
+   */
+  protected function getEditableConfigNames() {
+    return [
+      'specbee_location.adminsettings',
+    ];
   }
 
   /**
@@ -56,25 +61,22 @@ class SpecbeeLocation extends ConfigFormBase {
     return $form;
   }
 
+  /**
+   * Options for the timezone select form input.
+   */
   public function timezoneOptions() {
     return [
-      '1' => $this->t('America/Chicago'),
-      '2' => $this->t('America/New_York'),
-      '3' => $this->t('Asia/Tokyo'),
-      '4' => $this->t('Asia/Kolkata'),
-      '5' => $this->t('Europe/Amsterdam'),
-      '6' => $this->t('Europe/Oslo'),
-      '7' => $this->t('Europe/London'),
+      'America/Chicago' => $this->t('America/Chicago'),
+      'America/New_York' => $this->t('America/New_York'),
+      'Asia/Tokyo' => $this->t('Asia/Tokyo'),
+      'Asia/Kolkata' => $this->t('Asia/Kolkata'),
+      'Europe/Amsterdam' => $this->t('Europe/Amsterdam'),
+      'Europe/Oslo' => $this->t('Europe/Oslo'),
+      'Europe/London' => $this->t('Europe/London'),
     ];
   }
 
   /**
-   * {@inheritdoc}
-   */
-  public function validateForm(array &$form, FormStateInterface $form_state) {
-  }
-
-   /**
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
@@ -85,4 +87,5 @@ class SpecbeeLocation extends ConfigFormBase {
     $config->save();
     return parent::submitForm($form, $form_state);
   }
+
 }
